@@ -14,7 +14,7 @@ root.geometry("900x500+300+200")
 root.resizable(False,False)
 
 def getWeather():
-    # try:
+    try:
         city=textfield.get()
 
         geolocator = Nominatim(user_agent="my_app")
@@ -38,17 +38,17 @@ def getWeather():
         pressure= json_data['main']['pressure']
         humidity = json_data['main']['humidity']
         wind = json_data['wind']['speed']
-    #
+
         t.config(text=(temp,"°"))
         c.config(text=(condition,"|","FEELS","LIKE",temp,"°"))
-    #
+
         w.config(text=wind)
         h.config(text=humidity)
         d.config(text=description)
         p.config(text=pressure)
-    #
-    # except Exception as e:
-    #     messagebox.showerror("Weather App","Invalid Entry!!")
+
+    except Exception as e:
+        messagebox.showerror("Weather App","Invalid Entry!!")
 
 #search box
 search_image = PhotoImage(file="C:/Users/ram_s/Downloads/search.png")
@@ -75,13 +75,13 @@ logo.place(x=200,y=100)
 frame_image = PhotoImage(file="C:/Users/ram_s/Downloads/box.png")
 frame_myimage = Label(image=frame_image)
 frame_myimage.pack(padx=5,pady=5,side = "bottom")
-#
+
 # time
 name = Label(root,font=("arial",15,"bold"))
 name.place(x=30,y=100)
 clock = Label(root,font=("Helvetica",20))
 clock.place(x=30,y=130)
-#
+
 #label
 label1 = Label(root,text="WIND",font=("Helvetica",15,"bold"),fg="white",bg="#1ab5ef")
 label1.place(x=120,y=400)
